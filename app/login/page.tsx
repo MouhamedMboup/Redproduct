@@ -1,7 +1,9 @@
 
+'use client';
 import { styled } from "styled-components";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const LoginFormContainer = styled.div`
 position: absolute;
@@ -9,9 +11,9 @@ height: 100%;
 width:100%;
 left: 0px;
 top:0;
-background: url('../../public/before.png');
-mix-blend-mode: multiply;
 background-color: #494C4F;
+mix-blend-mode: multiply;
+
 `;
 const LoginForm = styled.div`
 position: relative;
@@ -124,8 +126,10 @@ border-radius: 5.33333px;
 width: 90%;
 margin: auto;
 left: 15px;
+cursor: pointer;
 `;
-const Mot2pass = styled.a`
+const Mot2pass = styled.div`
+a{
 position: relative;
 width: 178px;
 height: 28px;
@@ -140,6 +144,9 @@ display: flex;
 align-items: center;
 text-align: center;
 color: #FFD964;
+text-decoration: none;
+}
+
 `;
 
 const Pasdecompte = styled.p`
@@ -157,18 +164,18 @@ display: flex;
 align-items: center;
 text-align: center;
 color: rgba(255, 255, 255, 0.87);
+a{
+  color: #FFD964;
+  text-decoration: none;
+}
 `;
 
-const Inscription = styled.a`
-color: #FFD964;
-text-decoration: none;
-`;
 
 
 
 
 
- function Login() {
+export default function Login() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -177,7 +184,11 @@ text-decoration: none;
 
   if (!mounted) return null;
 
+  const pathname = usePathname();
+
   return (
+
+  
     <><LoginFormContainer>
       <Svg> <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M2.66602 2.66624H29.3286V29.3288L2.66602 2.66624Z" fill="white" />
@@ -194,17 +205,16 @@ text-decoration: none;
           <Input type="password" placeholder="Mot de passe" /><br />
           <Input2 type="checkbox" />
           <Label>Gardez-moi connecté</Label><br />
-          <Button type="button">Se connecter</Button>
+          <Link href="/dashboard"><Button type="button">Se connecter</Button></Link>
         </form>
       </LoginForm>
-    </LoginFormContainer>
-    <Mot2pass> Mot de passe oublié? </Mot2pass>
-    <Pasdecompte>Vous n'avez pas de compte?&nbsp; 
-    <Link href="/inscription" > <Inscription>S'inscrire</Inscription> 
-    </Link>
-    </Pasdecompte>
-    </>
+    </LoginFormContainer><Mot2pass><Link href="/forgottenMd"> Mot de passe oublié? </Link></Mot2pass><Pasdecompte>Vous n'avez pas de compte?&nbsp;
+        <Link href="/inscription"> S'inscrire</Link>
+      </Pasdecompte></>
+    
+    
+    
 
   );
 }
-export default Login
+ 

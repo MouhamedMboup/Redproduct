@@ -1,5 +1,9 @@
-import { useEffect, useState } from "react";
+
+'use client';
 import { styled } from "styled-components";
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const LoginFormContainer = styled.div`
 position: absolute;
@@ -7,24 +11,13 @@ height: 100%;
 width:100%;
 left: 0px;
 top:0;
-background: url('../../public/before.png');
-mix-blend-mode: multiply;
 background-color: #494C4F;
+mix-blend-mode: multiply;
 
-background-repeat: no-repeat;
-background-size: auto;
 `;
-const Overlay = styled.div`
-background: black;
-position : absolute;
-width: 100%;
-height: 100%;
-opacity: 0.8;
-z-index: -1;
-`
 const LoginForm = styled.div`
 position: relative;
-height: 300px;
+height: 400px;
 width: 300px;
 margin: auto;
 top: 20%;
@@ -68,12 +61,24 @@ box-sizing: border-box;
 display: inline-block;
 padding: 12px 30px;
 margin: 8px 0;
-
-`;
+`
+const Email = styled.input `
+position: relative;
+height: 30.33px;
+top: 60.92px;
+border: 0;
+border-bottom: 1px solid #494C4F;
+width: 100%;
+box-sizing: border-box;
+display: inline-block;
+padding: 12px 30px;
+margin: 8px 0;
+`
+;
 const Input = styled.input`
 position: relative;
 height: 35.33px;
-top: 30.92px;
+top: 70.92px;
 border: 0;
 border-bottom: 1px solid #494C4F;
 width: 100%;
@@ -86,7 +91,7 @@ const Input2 = styled.input`
 box-sizing: border-box;
 position: relative;
 width: 24px;
-top: 60px;
+top: 115px;
 bottom: 27.66%;
 padding: 12px 30px;
 border: 2.66667px solid #9E9E9E;
@@ -95,10 +100,10 @@ left: 19px;
  `;
 const Label = styled.label`
 position: relative;
-width: 177px;
+width: 200px;
 height: 28px;
-left: 50.33px;
-top: 35.59px;
+left: 45.33px;
+top: 90.59px;
 font-family: 'Roboto';
 font-style: normal;
 font-weight: 400;
@@ -107,6 +112,7 @@ line-height: 26px;
 display: flex;
 align-items: center;
 color: rgba(0, 0, 0, 0.87);
+white-space: nowrap;
   `;
 
 
@@ -126,15 +132,17 @@ left: 30px;
 const Button = styled.button`
 position: relative;
 height: 40.67px;
-top: 30.59px;
+top: 90.59px;
 color: rgba(240, 240, 240, 1);
 background-color: #45484B;
 border-radius: 5.33333px;
 width: 90%;
 margin: auto;
 left: 15px;
+cursor: pointer;
 `;
-const Mot2pass = styled.a`
+const Mot2pass = styled.div`
+a{
 position: relative;
 width: 178px;
 height: 28px;
@@ -149,6 +157,9 @@ display: flex;
 align-items: center;
 text-align: center;
 color: #FFD964;
+text-decoration: none;
+}
+
 `;
 
 const Pasdecompte = styled.p`
@@ -156,7 +167,7 @@ position: relative;
 width: 317px;
 height: 28px;
 left: calc(50% - 317px/2 - 0.5px);
-top: 500.59px;
+top: 600.59px;
 font-family: 'Roboto';
 font-style: normal;
 font-weight: 400;
@@ -166,29 +177,30 @@ display: flex;
 align-items: center;
 text-align: center;
 color: rgba(255, 255, 255, 0.87);
+a{
+  color: #FFD964;
+  text-decoration: none;
+}
 `;
 
-const Insscription = styled.a`
-color: #FFD964;
-
-`;
 
 
 
 
 
- function Inscription() {
-    const [mounted, setMounted] = useState(false);
-  
-    useEffect(() => {
-      setMounted(true);
-    }, []);
-  
-    if (!mounted) return null;
+export default function page() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  const pathname = usePathname();
+
   return (
-    <>
-    <Overlay>
-    <LoginFormContainer>
+    <><LoginFormContainer>
       <Svg> <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M2.66602 2.66624H29.3286V29.3288L2.66602 2.66624Z" fill="white" />
         <path d="M2.66602 2.66624H22.663L15.9973 15.9975L2.66602 2.66624Z" fill="black" fill-opacity="0.15" />
@@ -199,20 +211,23 @@ color: #FFD964;
       <LoginForm>
 
         <form>
-          <Sentence>Connectez vous en tant que admin</Sentence>
-          <LoginFormInput type="text" placeholder="E-mail"></LoginFormInput><br />
+          <Sentence>Inscrivez vous en tant que admin</Sentence>
+          <LoginFormInput type="text" placeholder="Nom"></LoginFormInput><br />
+          <Email type="text" placeholder="E-mail"></Email><br />
           <Input type="password" placeholder="Mot de passe" /><br />
           <Input2 type="checkbox" />
-          <Label>Gardez-moi connecté</Label><br />
-          <Button type="button">Se connecter</Button>
+          <Label>Acceptez les termes et la politique</Label><br />
+          <Button type="button">S'inscrire</Button>
         </form>
       </LoginForm>
     </LoginFormContainer>
-    <Mot2pass> Mot de passe oublié? </Mot2pass>
-    <Pasdecompte>Vous n'avez pas de compte?&nbsp; <Insscription>S'inscrire</Insscription></Pasdecompte>
-    </Overlay>
+    <Pasdecompte>Vous n'avez pas de compte?&nbsp; 
+    <Link href="/inscription" > Se connecter</Link>
+    </Pasdecompte>
+    
+    
     </>
 
   );
 }
-export default Inscription
+ 
