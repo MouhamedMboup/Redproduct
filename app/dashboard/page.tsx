@@ -2,6 +2,7 @@
 import React from 'react'
 import { styled } from "styled-components";
 import Image from 'next/image'
+import Link from 'next/link';
 
 const Divleft = styled.div `
 position: absolute;
@@ -48,12 +49,10 @@ color: #FFFFFF;
 `
 const Frame = styled.div`
 display: flex;
-flex-direction: row;
-align-items: flex-start;
 padding: 12px 25px;
 gap: 26px;
 position: relative;
-width: 300px;
+width: 254px;
 height: 30px;
 left: 0px;
 top: 25px;
@@ -80,15 +79,19 @@ top: 45px;
 color: white;
 left: 23px;
 `
-const Listhotelp = styled.p`
-position: relative;
-width: 90px;
-height: 24px;
-top: 0px;
-color: white;
-left: 70px;
-white-space: nowrap;
-font-size: 18.6638px;
+const Listhotelp = styled.div`
+a{
+    position: relative;
+    width: 90px;
+    height: 24px;
+    top: 17px;
+    color: white;
+    left: 70px;
+    white-space: nowrap;
+    font-size: 18.6638px;
+    text-decoration: none;
+}
+
 `
 
 const Profil = styled.div`
@@ -241,13 +244,187 @@ line-height: 25px;
 color: rgba(0, 0, 0, 0.87);
 opacity: 0.6;
 `
-const Main2 = styled.div`
+const Body = styled.body`
 background: rgba(240, 240, 240, 1);
+height: 100%;
+width: 100%;
+`
 
+const Cadre1 = styled.div`
+position: relative;
+height: 95px;
+left: 350px;
+top: 200px;
+width: 350px;
+background: #FFFFFF;
+box-shadow: 0px 0px 1.33313px rgba(0, 0, 0, 0.15);
+border-radius: 14px;
+`
+const Svg3 = styled.svg`
+position: relative;
+left: 20px;
+width: 60px;
+height: 60px;
+top: 25px;
+`
+const Numero1= styled.p`
+position: relative;
+width: 61.44px;
+height: 37.33px;
+left: 75px;
+bottom: 75px;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 300;
+font-size: 31.9951px;
+line-height: 35px;
+color: rgba(0, 0, 0, 0.87);
+`
+const Formulaire = styled.p`
+position: relative;
+left: 130px;
+bottom: 131px;
+width: 90px;
+height: 19px;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 300;
+font-size: 17.0641px;
+line-height: 19px;
+color: rgba(0, 0, 0, 0.87);
+`
+const Label1 = styled.p`
+position: relative;
+left: 80px;
+bottom: 145px;
+width: 197px;
+height: 26px;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 16.7974px;
+line-height: 25px;
+color: rgba(0, 0, 0, 0.87);
+opacity: 0.6;
+`
+const Cadre2 = styled.div`
+position: relative;
+height: 95px;
+left: 720px;
+top: 105px;
+width: 380px;
+background: #FFFFFF;
+box-shadow: 0px 0px 1.33313px rgba(0, 0, 0, 0.15);
+border-radius: 14px;
+`
+const Cadre3 = styled.div`
+position: relative;
+height: 95px;
+left: 1120px;
+top: 10px;
+width: 380px;
+background: #FFFFFF;
+box-shadow: 0px 0px 1.33313px rgba(0, 0, 0, 0.15);
+border-radius: 14px;
+`
+const Cadre4 = styled.div`
+position: relative;
+height: 95px;
+left: 1120px;
+top: 40px;
+width: 380px;
+background: #FFFFFF;
+box-shadow: 0px 0px 1.33313px rgba(0, 0, 0, 0.15);
+border-radius: 14px;
+`
+const Cadre5 = styled.div`
+position: relative;
+height: 95px;
+left: 720px;
+bottom: 55px;
+width: 380px;
+background: #FFFFFF;
+box-shadow: 0px 0px 1.33313px rgba(0, 0, 0, 0.15);
+border-radius: 14px;
+`
+const Cadre6 = styled.div`
+position: relative;
+height: 95px;
+left: 350px;
+bottom: 150px;
+width: 350px;
+background: #FFFFFF;
+box-shadow: 0px 0px 1.33313px rgba(0, 0, 0, 0.15);
+border-radius: 14px;
+`
+const Svg4 = styled.div`
+position: relative;
+width: 63.99px;
+height: 63.99px;
+left: 21.33px;
+top: 21.33px;
+background: #0CC2AA;
+border-radius: 666.565px;
+`
+
+const Svg5 = styled.svg`
+position: relative;
+width: 24.4px;
+height: 24px;
+left: 20px;
+top: 20px;
+font-family: 'Material Icons';
+font-style: normal;
+font-weight: 400;
+font-size: 23.9963px;
+line-height: 24px;
+color: black;
+`
+const Div = styled.div`
+position: relative;
+left: 22px;
+top: 0px;
+`
+const Svg6 = styled.svg`
+position: relative;
+width: 63.99px;
+height: 63.99px;
+left: 21.33px;
+top: 21.33px;
+background: #FCC100;
+border-radius: 666.565px;
+`
+const Svg7 = styled.svg`
+position: relative;
+width: 63.99px;
+height: 63.99px;
+left: 21.33px;
+top: 21.33px;
+background: #1565C0;
+border-radius: 666.565px;
+`
+const Svg8 = styled.svg`
+position: relative;
+width: 63.99px;
+height: 63.99px;
+left: 21.33px;
+top: 21.33px;
+background: #9C27B0;
+border-radius: 666.565px;
+`
+const Svg9 = styled.svg`
+position: relative;
+width: 63.99px;
+height: 63.99px;
+left: 21.33px;
+top: 21.33px;
+background: #F90000;
+border-radius: 666.565px;
 `
 
 export default function page() {
   return (
+    <Body>
         <Divleft>
           <Logo><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M2.66602 2.66624H29.3286V29.3288L2.66602 2.66624Z" fill="white" />
@@ -272,7 +449,7 @@ export default function page() {
                   </defs>
               </svg>
           </Listhotelsvg>
-          <Listhotelp>Liste des hôtels </Listhotelp>
+          <Listhotelp><Link href='/listhotels'>Liste des hôtels </Link></Listhotelp>
           <Profil><Image src="/assets/profile.png" alt="Girl in a jacket" width="50" height="50" />
               <Name>Mouhamed Badiane</Name>
               <Svj width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -310,5 +487,78 @@ export default function page() {
               <Lorem>Lorem ipsum dolor sit amet consectetur</Lorem>
           </Main>
         </Divleft>
+        <Cadre1>
+        <Svg3 width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0.32959" y="0.330044" width="63.9902" height="63.9902" rx="31.9951" fill="#A88ADD"/>
+        <path d="M32.5294 33.313L40.7782 28.1576L32.5294 23.3302L24.2807 28.1576L32.5294 33.313ZM42.5123 28.345V38.3279C42.5123 38.859 42.3092 39.3277 41.903 39.7339C41.5281 40.1401 41.075 40.3432 40.5438 40.3432H24.515C23.9839 40.3432 23.5152 40.1401 23.109 39.7339C22.7341 39.3277 22.5466 38.859 22.5466 38.3279V28.345C22.5466 27.5639 22.8591 26.9859 23.484 26.6109L32.5294 21.3149L41.5749 26.6109C42.1998 26.9859 42.5123 27.5639 42.5123 28.345Z" fill="white" fill-opacity="0.87"/>
+        </Svg3>
+        <Div>
+        <Numero1>125</Numero1>
+        <Formulaire>Formulaires</Formulaire>
+        <Label1>Je ne sais pas quoi mettre</Label1>
+        </Div>
+        </Cadre1>
+        <Cadre2>
+        <Svg4 width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0.330322" y="0.330044" width="63.9902" height="63.9902" rx="31.9951" fill="#0CC2AA"/>
+        <path d="M33.7483 31.3446C34.2794 31.3446 34.7325 31.1415 35.1074 30.7353C35.5136 30.3291 35.7167 29.8604 35.7167 29.3293C35.7167 28.7981 35.5136 28.3294 35.1074 27.9232C34.7325 27.517 34.2794 27.3139 33.7483 27.3139H30.5144V31.3446H33.7483ZM33.5139 23.3302C35.1699 23.3302 36.5759 23.9238 37.732 25.1112C38.9193 26.2672 39.513 27.6733 39.513 29.3293C39.513 30.9853 38.9193 32.4069 37.732 33.5942C36.5759 34.7503 35.1699 35.3283 33.5139 35.3283H30.5144V41.3274H26.5306V23.3302H33.5139Z" fill="white" fill-opacity="0.87"/>
+        <Svg5 width="14" height="19" viewBox="0 0 14 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7.74825 8.34457C8.27942 8.34457 8.73248 8.14148 9.10742 7.73529C9.51361 7.3291 9.7167 6.86042 9.7167 6.32926C9.7167 5.79809 9.51361 5.32941 9.10742 4.92322C8.73248 4.51703 8.27942 4.31394 7.74825 4.31394H4.51437V8.34457H7.74825ZM7.51391 0.330175C9.16991 0.330175 10.5759 0.923834 11.732 2.11115C12.9193 3.26723 13.513 4.67326 13.513 6.32926C13.513 7.98525 12.9193 9.40691 11.732 10.5942C10.5759 11.7503 9.16991 12.3283 7.51391 12.3283H4.51437V18.3274H0.530609V0.330175H7.51391Z" fill="white" fill-opacity="0.87"/>
+        </Svg5>
+        </Svg4>
+        <Div>
+        <Numero1>40</Numero1>
+        <Formulaire>Messages</Formulaire>
+        <Label1>Je ne sais pas quoi mettre</Label1>
+        </Div>
+        </Cadre2>
+        <Cadre3>
+        <Svg6 width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0.329834" y="0.330044" width="63.9902" height="63.9902" rx="31.9951" fill="#FCC100"/>
+        <path d="M29.5294 33.313C30.2168 33.313 31.0136 33.4068 31.9197 33.5942C30.3262 34.4691 29.5294 35.6252 29.5294 37.0624V39.3121H22.5461V36.8281C22.5461 36.1095 22.9679 35.4689 23.8115 34.9065C24.6864 34.3441 25.6394 33.9379 26.6705 33.688C27.7016 33.438 28.6546 33.313 29.5294 33.313ZM33.4194 35.094C34.6693 34.5941 35.8722 34.3441 37.0283 34.3441C38.1843 34.3441 39.3873 34.5941 40.6371 35.094C41.8869 35.5939 42.5118 36.2501 42.5118 37.0624V39.3121H31.5447V37.0624C31.5447 36.2501 32.1696 35.5939 33.4194 35.094ZM31.6385 30.4541C31.0448 31.0477 30.3418 31.3446 29.5294 31.3446C28.717 31.3446 28.014 31.0477 27.4204 30.4541C26.8267 29.8604 26.5299 29.1574 26.5299 28.345C26.5299 27.5327 26.8267 26.8296 27.4204 26.236C28.014 25.6423 28.717 25.3455 29.5294 25.3455C30.3418 25.3455 31.0448 25.6423 31.6385 26.236C32.2321 26.8296 32.529 27.5327 32.529 28.345C32.529 29.1574 32.2321 29.8604 31.6385 30.4541ZM38.7624 31.6258C38.2937 32.0945 37.7157 32.3288 37.0283 32.3288C36.3409 32.3288 35.7472 32.0945 35.2473 31.6258C34.7786 31.1259 34.5443 30.5322 34.5443 29.8448C34.5443 29.1574 34.7786 28.5637 35.2473 28.0638C35.7472 27.5639 36.3409 27.3139 37.0283 27.3139C37.7157 27.3139 38.2937 27.5639 38.7624 28.0638C39.2623 28.5637 39.5123 29.1574 39.5123 29.8448C39.5123 30.5322 39.2623 31.1259 38.7624 31.6258Z" fill="white" fill-opacity="0.87"/>
+        </Svg6>
+        <Div>
+        <Numero1>600</Numero1>
+        <Formulaire>Utilisateurs</Formulaire>
+        <Label1>Je ne sais pas quoi mettre</Label1>
+        </Div>
+        </Cadre3>
+        <Cadre4>
+        <Svg7 width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0.329834" y="0.330048" width="63.9902" height="63.9902" rx="31.9951" fill="#1565C0"/>
+        <path d="M29.5294 33.313C30.2168 33.313 31.0136 33.4068 31.9197 33.5942C30.3262 34.4691 29.5294 35.6252 29.5294 37.0625V39.3121H22.5461V36.8281C22.5461 36.1095 22.9679 35.4689 23.8115 34.9065C24.6864 34.3441 25.6394 33.9379 26.6705 33.688C27.7016 33.438 28.6546 33.313 29.5294 33.313ZM33.4194 35.094C34.6693 34.5941 35.8722 34.3441 37.0283 34.3441C38.1843 34.3441 39.3873 34.5941 40.6371 35.094C41.8869 35.5939 42.5118 36.2501 42.5118 37.0625V39.3121H31.5447V37.0625C31.5447 36.2501 32.1696 35.5939 33.4194 35.094ZM31.6385 30.4541C31.0448 31.0478 30.3418 31.3446 29.5294 31.3446C28.717 31.3446 28.014 31.0478 27.4204 30.4541C26.8267 29.8604 26.5299 29.1574 26.5299 28.345C26.5299 27.5327 26.8267 26.8296 27.4204 26.236C28.014 25.6423 28.717 25.3455 29.5294 25.3455C30.3418 25.3455 31.0448 25.6423 31.6385 26.236C32.2321 26.8296 32.529 27.5327 32.529 28.345C32.529 29.1574 32.2321 29.8604 31.6385 30.4541ZM38.7624 31.6258C38.2937 32.0945 37.7157 32.3288 37.0283 32.3288C36.3409 32.3288 35.7472 32.0945 35.2473 31.6258C34.7786 31.1259 34.5443 30.5322 34.5443 29.8448C34.5443 29.1574 34.7786 28.5638 35.2473 28.0638C35.7472 27.5639 36.3409 27.3139 37.0283 27.3139C37.7157 27.3139 38.2937 27.5639 38.7624 28.0638C39.2623 28.5638 39.5123 29.1574 39.5123 29.8448C39.5123 30.5322 39.2623 31.1259 38.7624 31.6258Z" fill="white" fill-opacity="0.87"/>
+        </Svg7>
+
+        <Div>
+        <Numero1>02</Numero1>
+        <Formulaire>Entités </Formulaire>
+        <Label1>Je ne sais pas quoi mettre</Label1>
+        </Div>
+        </Cadre4>
+        <Cadre5>
+        <Svg8 width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0.330322" y="0.330048" width="63.9902" height="63.9902" rx="31.9951" fill="#9C27B0"/>
+        <path d="M33.7483 31.3446C34.2794 31.3446 34.7325 31.1415 35.1074 30.7353C35.5136 30.3291 35.7167 29.8604 35.7167 29.3293C35.7167 28.7981 35.5136 28.3294 35.1074 27.9232C34.7325 27.517 34.2794 27.3139 33.7483 27.3139H30.5144V31.3446H33.7483ZM33.5139 23.3302C35.1699 23.3302 36.5759 23.9238 37.732 25.1112C38.9193 26.2672 39.513 27.6733 39.513 29.3293C39.513 30.9853 38.9193 32.4069 37.732 33.5942C36.5759 34.7503 35.1699 35.3283 33.5139 35.3283H30.5144V41.3274H26.5306V23.3302H33.5139Z" fill="white" fill-opacity="0.87"/>
+        </Svg8>
+        <Div>
+        <Numero1>40</Numero1>
+        <Formulaire>Hôtels  </Formulaire>
+        <Label1>Je ne sais pas quoi mettre</Label1>
+        </Div>
+
+        </Cadre5>
+        <Cadre6>
+        <Svg9 width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0.32959" y="0.330048" width="63.9902" height="63.9902" rx="31.9951" fill="#F90000"/>
+        <path d="M32.5294 33.313L40.7782 28.1576L32.5294 23.3302L24.2807 28.1576L32.5294 33.313ZM42.5123 28.345V38.3279C42.5123 38.8591 42.3092 39.3277 41.903 39.7339C41.5281 40.1401 41.075 40.3432 40.5438 40.3432H24.515C23.9839 40.3432 23.5152 40.1401 23.109 39.7339C22.7341 39.3277 22.5466 38.8591 22.5466 38.3279V28.345C22.5466 27.5639 22.8591 26.9859 23.484 26.6109L32.5294 21.3149L41.5749 26.6109C42.1998 26.9859 42.5123 27.5639 42.5123 28.345Z" fill="white" fill-opacity="0.87"/>
+        </Svg9>
+        <Div>
+        <Numero1>25</Numero1>
+        <Formulaire>E-mails  </Formulaire>
+        <Label1>Je ne sais pas quoi mettre</Label1>
+        </Div>
+
+        </Cadre6>
+        </Body>
   )
 }
