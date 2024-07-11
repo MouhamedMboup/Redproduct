@@ -2,8 +2,12 @@
 'use client';
 import { styled } from "styled-components";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { NextRequest, NextResponse } from 'next/server';
+import { useRouter } from "next/navigation";
+import axios from "axios";
+import bcryptjs from 'bcryptjs';
 
 const LoginFormContainer = styled.div`
 position: absolute;
@@ -13,7 +17,6 @@ left: 0px;
 top:0;
 background-color: #494C4F;
 mix-blend-mode: multiply;
-
 `;
 const LoginForm = styled.div`
 position: relative;
@@ -182,9 +185,30 @@ export default function Login() {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  const router = useRouter();
 
-  const pathname = usePathname();
+  const [user, setUser] = React.useState({
+		email: '',
+		password: '',
+	});
+
+  const [loading, setLoading] = React.useState(false);
+
+  const onLogin = async () => {
+		try {
+			setLoading(true);
+			const response = await axios.post('api/users/login', user);
+			console.log('Login successful', response.data);
+			router.push('/dashboard');
+		} catch (error: any) {
+			console.log('Login failed', error.message);
+		} finally {
+			setLoading(false);
+		}
+	};
+
+ 
+  if (!mounted) return null;
 
   return (
 
@@ -192,7 +216,7 @@ export default function Login() {
     <><LoginFormContainer>
       <Svg> <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M2.66602 2.66624H29.3286V29.3288L2.66602 2.66624Z" fill="white" />
-        <path d="M2.66602 2.66624H22.663L15.9973 15.9975L2.66602 2.66624Z" fill="black" fill-opacity="0.15" />
+        <path d="M2.66602 2.66624H22.663L15.9973 15.9975L2.66602 2.66624Z" fill="black" fillOpacity="0.15" />
         <path d="M2.66602 2.66624H15.9973L2.66602 29.3288V2.66624Z" fill="white" />
       </svg>
       </Svg>
@@ -200,16 +224,20 @@ export default function Login() {
       <LoginForm>
 
         <form>
-          <Sentence>Connectez vous en tant que admin</Sentence>
-          <LoginFormInput type="text" placeholder="E-mail"></LoginFormInput><br />
-          <Input type="password" placeholder="Mot de passe" /><br />
+          <Sentence> {loading ? "We're logging you in.." : 'Connectez vous en tant que admin'  } </Sentence>
+          <LoginFormInput id="email"
+				value={user.email}
+				onChange={(e) => setUser({ ...user, email: e.target.value })} type="text" placeholder="E-mail"></LoginFormInput><br />
+          <Input type="password" id="pasword"
+				value={user.password}
+				onChange={(e) => setUser({ ...user, email: e.target.value })} placeholder="Mot de passe" /><br />
           <Input2 type="checkbox" />
           <Label>Gardez-moi connecté</Label><br />
-          <Link href="/dashboard"><Button type="button">Se connecter</Button></Link>
+          <Link href="/dashboard"><Button onClick={onLogin} type="button">Se connecter</Button></Link>
         </form>
       </LoginForm>
     </LoginFormContainer><Mot2pass><Link href="/forgottenMd"> Mot de passe oublié? </Link></Mot2pass><Pasdecompte>Vous n'avez pas de compte?&nbsp;
-        <Link href="/inscription"> S'inscrire</Link>
+        <Link href="/inscription"> S`&apos;`inscrire</Link>
       </Pasdecompte></>
     
     

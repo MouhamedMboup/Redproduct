@@ -3,7 +3,10 @@
 import { styled } from "styled-components";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import axios from "axios";
+import React from "react";
+import { useRouter } from "next/navigation";
+
 
 const LoginFormContainer = styled.div`
 position: absolute;
@@ -188,22 +191,43 @@ a{
 
 
 
-export default function page() {
+export default function Signup() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  const router = useRouter();
 
-  const pathname = usePathname();
+  const [user, setUser] = React.useState({
+    username: '',
+    email: '',
+    password: '',
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  const onSignup = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.post('/api/users/inscription', user);
+      console.log('signed up', response.data);
+      router.push('/login');
+    } catch (error: any) {
+      console.log('Failed to sign up the user', error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (!mounted) return null;
 
   return (
     <><LoginFormContainer>
       <Svg> <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M2.66602 2.66624H29.3286V29.3288L2.66602 2.66624Z" fill="white" />
-        <path d="M2.66602 2.66624H22.663L15.9973 15.9975L2.66602 2.66624Z" fill="black" fill-opacity="0.15" />
+        <path d="M2.66602 2.66624H22.663L15.9973 15.9975L2.66602 2.66624Z" fill="black" fillOpacity="0.15" />
         <path d="M2.66602 2.66624H15.9973L2.66602 29.3288V2.66624Z" fill="white" />
       </svg>
       </Svg>
@@ -211,17 +235,19 @@ export default function page() {
       <LoginForm>
 
         <form>
-          <Sentence>Inscrivez vous en tant que admin</Sentence>
-          <LoginFormInput type="text" placeholder="Nom"></LoginFormInput><br />
-          <Email type="text" placeholder="E-mail"></Email><br />
-          <Input type="password" placeholder="Mot de passe" /><br />
+          <Sentence>
+            {loading ? 'Loading...': 'Inscrivez vous en tant que admin'}
+          </Sentence>
+          <LoginFormInput type="text" placeholder="Nom" value = {user.username} onChange={(e) => setUser({ ...user, username: e.target.value})}></LoginFormInput><br />
+          <Email type="text" placeholder="E-mail" value = {user.email} onChange={(e) => setUser({ ...user, email: e.target.value})}></Email><br />
+          <Input type="password" placeholder="Mot de passe" value = {user.password} onChange={(e) => setUser({ ...user, password: e.target.value})} /><br />
           <Input2 type="checkbox" />
           <Label>Acceptez les termes et la politique</Label><br />
-          <Button type="button">S'inscrire</Button>
+          <Button type="button" onClick={onSignup}> S&apos;inscrire </Button>
         </form>
       </LoginForm>
     </LoginFormContainer>
-    <Pasdecompte>Vous n'avez pas de compte?&nbsp; 
+    <Pasdecompte>Vous n&apos;avez pas de compte?&nbsp; 
     <Link href="/inscription" > Se connecter</Link>
     </Pasdecompte>
     
