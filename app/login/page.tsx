@@ -191,6 +191,7 @@ export default function Login() {
 		email: '',
 		password: '',
 	});
+  
 
   const [loading, setLoading] = React.useState(false);
 
@@ -226,18 +227,18 @@ export default function Login() {
         <form>
           <Sentence> {loading ? "We're logging you in.." : 'Connectez vous en tant que admin'  } </Sentence>
           <LoginFormInput id="email"
-				value={user.email}
-				onChange={(e) => setUser({ ...user, email: e.target.value })} type="text" placeholder="E-mail"></LoginFormInput><br />
+            value={user.email}
+            onChange={(e) => setUser({ ...user, email: e.target.value })} type="text" placeholder="E-mail"></LoginFormInput><br />
           <Input type="password" id="pasword"
-				value={user.password}
-				onChange={(e) => setUser({ ...user, email: e.target.value })} placeholder="Mot de passe" /><br />
+            value={user.password}
+            onChange={(e) => setUser({ ...user, password: e.target.value })} placeholder="Mot de passe" /><br />
           <Input2 type="checkbox" />
           <Label>Gardez-moi connecté</Label><br />
-          <Link href="/dashboard"><Button onClick={onLogin} type="button">Se connecter</Button></Link>
+          <Button onClick={onLogin} type="button">Se connecter</Button>
         </form>
       </LoginForm>
     </LoginFormContainer><Mot2pass><Link href="/forgottenMd"> Mot de passe oublié? </Link></Mot2pass><Pasdecompte>Vous n'avez pas de compte?&nbsp;
-        <Link href="/inscription"> S`&apos;`inscrire</Link>
+        <Link href="/inscription"> S&apos;inscrire</Link>
       </Pasdecompte></>
     
     

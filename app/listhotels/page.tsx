@@ -451,6 +451,17 @@ width: 90%;
 left: 640px;
 bottom: 445px;
 margin-right: 0px;
+
+`
+const Card6 = styled.div`
+position: relative;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+transition: 0.3s;
+width: 90%;
+left: 640px;
+bottom: 1145px;
+margin-right: 0px;
+
 `
 const Card2 = styled.div`
 position: relative;
@@ -473,7 +484,35 @@ margin-right: 0px;
 const H1 = styled.h1`
 font-size: 20px;
 `
-export default function page() {
+const Card5 = styled.div`
+position: relative;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+transition: 0.3s;
+width: 90%;
+left: 350px;
+bottom: 1000px;
+margin-right: 0px;
+`
+const Card7 = styled.div`
+position: relative;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+transition: 0.3s;
+width: 90%;
+left: 1220px;
+bottom: 1285px;
+margin-right: 0px;
+`
+const Card8 = styled.div`
+position: relative;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+transition: 0.3s;
+width: 90%;
+left: 930px;
+bottom: 1420px;
+margin-right: 0px;
+`
+
+export default function Page() {
     const [showModal, setShowModal] = useState(false);
   return (
     <Body>
@@ -630,11 +669,43 @@ export default function page() {
         <Card3>
         <Image src="/assets/image3.png" alt="Avatar" width="270" height="200" />
         <Container>
-            <Adresse>Place de l'Independance, 10 Rue PL 29, Dakar</Adresse>
+            <Adresse>Place de l&apos;Independance, 10 Rue PL 29, Dakar</Adresse>
             <H1>Pullman Dakar Teranga</H1>
             <p>30.000 XOF par nuit</p>
         </Container>
         </Card3>
+        <Card5>
+        <Image src="" alt="Avatar" width="270" height="200" />
+        <Container>
+            <Adresse>Place de l&apos;Independance, 10 Rue PL 29, Dakar</Adresse>
+            <H1>Pullman Dakar Teranga</H1>
+            <p>30.000 XOF par nuit</p>
+        </Container>
+        </Card5>
+        <Card6>
+        <Image src="" alt="Avatar" width="270" height="200" />
+        <Container>
+            <Adresse>Place de l&apos;Independance, 10 Rue PL 29, Dakar</Adresse>
+            <H1>Pullman Dakar Teranga</H1>
+            <p>30.000 XOF par nuit</p>
+        </Container>
+        </Card6>
+        <Card7>
+        <Image src="" alt="Avatar" width="270" height="200" />
+        <Container>
+            <Adresse>Place de l&apos;Independance, 10 Rue PL 29, Dakar</Adresse>
+            <H1>Pullman Dakar Teranga</H1>
+            <p>30.000 XOF par nuit</p>
+        </Container>
+        </Card7>
+        <Card8>
+        <Image src="" alt="Avatar" width="270" height="200" />
+        <Container>
+            <Adresse>Place de l&apos;Independance, 10 Rue PL 29, Dakar</Adresse>
+            <H1>Pullman Dakar Teranga</H1>
+            <p>30.000 XOF par nuit</p>
+        </Container>
+        </Card8>
         </Divleft>
         
         </Body>
